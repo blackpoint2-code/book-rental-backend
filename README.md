@@ -6,7 +6,9 @@
 개발 기간: 2026.07.08 ~ 진행 중
 
 🛠 기술 스택
+
 카테고리	기술
+
 운영체제	Windows 11
 언어	Java, JavaScript
 프론트엔드	React, CSS
