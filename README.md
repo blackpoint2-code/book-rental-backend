@@ -10,12 +10,19 @@
 카테고리	기술
 
 운영체제	Windows 11
+
 언어	Java, JavaScript
+
 프론트엔드	React, CSS
+
 백엔드	Spring Boot
+
 데이터베이스	PostgreSQL
+
 ORM	JPA (Spring Data JPA)
+
 빌드 도구	Gradle
+
 개발 도구	IntelliJ IDEA, VS Code
 
 🚀 주요 기능
