@@ -5,8 +5,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.library.book_rental.repository.BookRepository; // 이거 꼭 import 해야 해요!
 import jakarta.annotation.PostConstruct; // 이것도 필요해요!
 import org.springframework.beans.factory.annotation.Autowired; // 이것도!
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
+@EnableScheduling
 public class BookRentalApplication {
 
 	@Autowired

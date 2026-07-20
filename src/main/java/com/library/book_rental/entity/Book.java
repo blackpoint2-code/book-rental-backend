@@ -16,6 +16,9 @@ public class Book {
     @Column(name = "book_no", unique = true, nullable = false)
     private String bookNo; // B-001, B-002...
 
+    @Column(name = "book_title")
+    private String bookTitle;
+
     private String title;
     private String author;
     private String publisher;
