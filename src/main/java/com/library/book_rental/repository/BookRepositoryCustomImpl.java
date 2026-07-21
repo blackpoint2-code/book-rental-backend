@@ -21,7 +21,7 @@ public class BookRepositoryCustomImpl implements BookRepositoryCustom {
             builder.and(book.title.contains(request.getTitle()));
         }
         if (request.getAuthor() != null && !request.getAuthor().isEmpty()) {
-            builder.and(book.author.contains(request.getAuthor()));
+            builder.and(book.author.authorName.contains(request.getAuthor()));
         }
         if (request.getPublisher() != null && !request.getPublisher().isEmpty()) {
             builder.and(book.publisher.contains(request.getPublisher()));

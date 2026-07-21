@@ -20,10 +20,14 @@ public class Book {
     private String bookTitle;
 
     private String title;
-    private String author;
     private String publisher;
     private String category;
 
     @Column(name = "is_recommended")
     private boolean isRecommended;
+
+    // "이 책은 한 명의 저자에 속해 있다" (Many to One)
+    @ManyToOne
+    @JoinColumn(name = "author_id") // DB에 생길 외래키(Foreign Key) 컬럼명
+    private Author author;
 }
