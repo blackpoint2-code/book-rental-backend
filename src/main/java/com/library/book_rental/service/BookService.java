@@ -4,6 +4,7 @@ import com.library.book_rental.dto.BookCreateRequest;
 import com.library.book_rental.dto.BookSearchRequest;
 import com.library.book_rental.entity.Author;
 import com.library.book_rental.entity.Book;
+import com.library.book_rental.entity.BookStatus;
 import com.library.book_rental.repository.AuthorRepository;
 import com.library.book_rental.repository.BookRepository;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,23 @@ import org.springframework.transaction.annotation.Transactional;
 public class BookService {
     private final BookRepository bookRepository;
 
+    // 도서 대출 예약 로직
+    public void reserveBook(Long bookId) {
+        // 1. 책 ID로 책 조회 (없으면 예외 처리)
+        Book book = bookRepository.findById(bookId)
+                .orElseThrow(() -> new IllegalArgumentException("해당 도서가 존재하지 않습니다. ID: " + bookId));
+
+        // 2. 현재 대출 가능한 상태인지 검증
+        if (book.getStatus() != BookStatus.AVAILABLE) {
+            throw new IllegalStateException("이미 대출 중이거나 예약된 도서입니다.");
+        }
+
+        // 3. 상태를 '예약중(RESERVED)'으로 변경
+        // (Entity 내부에 status를 바꾸는 메서드를 만들어두거나 setter를 활용)
+        book.setStatus(BookStatus.RESERVED);
+
+        // @Transactional에 의해 메서드가 끝날 때 알아서 변경사항이 DB에 반영(Dirty Checking)됩니다.
+    }
     // 모든 책을 가져오는 메서드
     public List<Book> getAllBooks() {
         return bookRepository.findAll();

@@ -30,4 +30,8 @@ public class Book {
     @ManyToOne
     @JoinColumn(name = "author_id") // DB에 생길 외래키(Foreign Key) 컬럼명
     private Author author;
+
+    // 도서 대출 상태 (ENUM 타입)
+    @Enumerated(EnumType.STRING)
+    private BookStatus status = BookStatus.AVAILABLE; // 기본값은 대출 가능
 }
